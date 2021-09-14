@@ -1,0 +1,43 @@
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.loading__container {
+  width: 100px;
+  height: 100px;
+  border: 1px solid var(--main-bg-dark);
+  border-radius: 50px;
+  border-bottom: 1px solid transparent;
+  transform: 1s;
+  animation: loading 0.5s linear infinite;
+}
+
+.loading__container.white {
+  border: 1px solid var(--main-bg-light);
+}
+
+.product__image {
+  width: 50px;
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.alert {
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  color: #f2f6fa;
+  background-color: var(--main-color-red);
+}
