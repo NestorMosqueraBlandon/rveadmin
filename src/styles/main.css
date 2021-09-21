@@ -76,13 +76,37 @@ table {
   border-collapse: collapse;
 }
 
+tr {
+  transition: 0.3s;
+}
 th {
   padding: 1rem;
   font-size: 1.2rem;
   text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 td {
   padding: 1rem;
   font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.footer__buttons .btn {
+  padding: 10px 30px;
+}
+
+.footer__buttons .btn:first-child {
+  margin-right: 20px;
 }

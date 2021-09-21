@@ -11,13 +11,14 @@ import {
   PRODUCT_DELETE_SUCCESS,
 } from '../constants/productConstants';
 
-export const listProducts = () => async (dispatch, getState) => {
+export const listProducts = (page) => async (dispatch, getState) => {
   dispatch({ type: PRODUCT_LIST_REQUEST });
   try {
     const { data } = await Axios.get(
-      'https://rveapi.herokuapp.com/api/v1/products/'
+      `https://rveapi.herokuapp.com/api/v1/products?page=${page}`
     );
 
+    console.log(data);
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data.products });
   } catch (error) {
     dispatch({

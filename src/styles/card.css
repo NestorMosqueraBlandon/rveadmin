@@ -20,3 +20,22 @@
 .card__header h2 {
   font-weight: 500;
 }
+
+.clean__card {
+  margin-top: 20px;
+}
+
+.clean__body {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.clean__body-header {
+  padding: 2rem;
+}
+.clean__body .form-control {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--txt-color-dark);
+  border-radius: 5px;
+}

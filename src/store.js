@@ -12,12 +12,32 @@ import {
   productDeleteReducer,
   productListReducer,
 } from './reducers/productReducer.js';
+import {
+  computerCreateReducer,
+  computerDeleteReducer,
+  computerListReducer,
+} from './reducers/computerReducer.js';
+import {
+  quotationCreateReducer,
+  quotationDetailsReducer,
+  quotationDeleteReducer,
+  quotationListReducer,
+  quotationReducer,
+} from './reducers/quotationReducer.js';
 
 const initialState = {
   userSignin: {
     userInfo: localStorage.getItem('userInfo')
       ? JSON.parse(localStorage.getItem('userInfo'))
       : null,
+  },
+  quotation: {
+    items: localStorage.getItem('items')
+      ? JSON.parse(localStorage.getItem('items'))
+      : [],
+    clientData: localStorage.getItem('clientData')
+      ? JSON.parse(localStorage.getItem('clientData'))
+      : {},
   },
 };
 
@@ -30,6 +50,14 @@ const reducer = combineReducers({
   productList: productListReducer,
   productCreate: productCreateReducer,
   productDelete: productDeleteReducer,
+  computerList: computerListReducer,
+  computerCreate: computerCreateReducer,
+  computerDelete: computerDeleteReducer,
+  quotation: quotationReducer,
+  quotationCreate: quotationCreateReducer,
+  quotationList: quotationListReducer,
+  quotationDelete: quotationDeleteReducer,
+  quotationDetails: quotationDetailsReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
