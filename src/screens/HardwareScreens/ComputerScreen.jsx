@@ -203,28 +203,19 @@ export default function ComputerScreen(props) {
                     ) : (
                       <td>
                         <details>
-                          {products.map((product) => (
-                            <>
-                              <summary>
-                                {computer.specs.map((spec) =>
-                                  spec.product == product._id ? (
-                                    <span>{spec.name}</span>
-                                  ) : (
-                                    <span>{spec.name}</span>
-                                  )
-                                )}
-                              </summary>
+                          <>
+                            <summary>
+                              Specs
+                              {/* {computer.specs.map((spec) => (
+                                <span> {spec.name}</span>
+                              ))} */}
+                            </summary>
+                            {computer.specs.map((spec) => (
                               <p>
-                                {computer.specs.map((spec) =>
-                                  spec.product === product._id ? (
-                                    <span>{product.name}</span>
-                                  ) : (
-                                    <span>h</span>
-                                  )
-                                )}
+                                <span>{spec.name}</span>
                               </p>
-                            </>
-                          ))}
+                            ))}
+                          </>
                         </details>
                       </td>
                     )}
