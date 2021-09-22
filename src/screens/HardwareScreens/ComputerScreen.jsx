@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  addToList,
   createComputer,
   deleteComputer,
   listComputers,
+  removeList,
 } from '../../actions/computerActions';
 import LoadingBox from '../../components/LoadingBox';
 import MessageBox from '../../components/MessageBox';
@@ -25,6 +27,14 @@ export default function ComputerScreen(props) {
   const productList = useSelector((state) => state.productList);
   const { loading: loadingProducts, products } = productList;
 
+  const computerState = useSelector((state) => state.computer);
+
+  computerState.price = computerState.specs.reduce(
+    (a, c) => a + Number(c.price) * Number(c.qty),
+    0
+  );
+
+  console.log(computerState.price);
   const computerCreate = useSelector((state) => state.computerCreate);
   const { success: successCreate } = computerCreate;
 
@@ -58,6 +68,10 @@ export default function ComputerScreen(props) {
 
   const [openModal, setOpenModal] = useState(false);
 
+  const addList = (name, qty, id) => {
+    dispatch(addToList(name, qty));
+  };
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,6 +81,7 @@ export default function ComputerScreen(props) {
       setBrand('');
       setPrice('');
       setImage('./img/default.png');
+      dispatch(removeList());
     }
     if (successDelete) {
       dispatch({ type: COMPUTER_DELETE_RESET });
@@ -76,10 +91,20 @@ export default function ComputerScreen(props) {
     dispatch(listProducts());
   }, [dispatch, props.history, successDelete, successCreate]);
 
+  console.log(computerState);
   const submitHandler = (e) => {
     e.preventDefault();
     setOpenModal(!openModal);
-    dispatch(createComputer(name, brand, image, price));
+    dispatch(
+      createComputer({
+        ...computerState,
+        name,
+        brand,
+        description,
+        image,
+        price: computerState.price,
+      })
+    );
   };
 
   const deleteHandler = (computer) => {
@@ -182,16 +207,16 @@ export default function ComputerScreen(props) {
                             <>
                               <summary>
                                 {computer.specs.map((spec) =>
-                                  spec.cpu === product._id ? (
-                                    <span>{product.name}</span>
+                                  spec.product == product._id ? (
+                                    <span>{spec.name}</span>
                                   ) : (
-                                    <span>h</span>
+                                    <span>{spec.name}</span>
                                   )
                                 )}
                               </summary>
                               <p>
                                 {computer.specs.map((spec) =>
-                                  spec.cpu === product._id ? (
+                                  spec.product === product._id ? (
                                     <span>{product.name}</span>
                                   ) : (
                                     <span>h</span>
@@ -229,7 +254,7 @@ export default function ComputerScreen(props) {
       </>
 
       <div className={openModal ? 'modal active' : 'modal'}>
-        <div className="modal__dialog">
+        <div className="doble-modal__dialog">
           <div className="modal__card">
             <div className="card__header b-line">
               <h2 className="card__title">Add Computer</h2>
@@ -241,23 +266,45 @@ export default function ComputerScreen(props) {
               </button>
             </div>
             <div className="card__body">
+              <div>
+                <form action="">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Brand"
+                      value={brand}
+                      onChange={(e) => setBrand(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Description"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      placeholder="Price"
+                      value={computerState.price}
+                      readOnly
+                    />
+                  </div>
+                </form>
+              </div>
               <form action="">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Brand"
-                    value={brand}
-                    onChange={(e) => setBrand(e.target.value)}
-                  />
-                </div>
                 {loadingProducts ? (
                   <LoadingBox></LoadingBox>
                 ) : (
@@ -266,8 +313,8 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={cpu}
-                        onChange={(e) => setCpu(e.target.value)}
+                        // value={cpu}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">CPU</option>
 
@@ -287,8 +334,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={wattercooling}
-                        onChange={(e) => setWatercooling(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">WATER COOLING</option>
 
@@ -308,8 +354,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={motherboard}
-                        onChange={(e) => setMotherboard(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">MOTHERBOARD</option>
 
@@ -329,8 +374,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={ram}
-                        onChange={(e) => setRam(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">RAM</option>
 
@@ -350,8 +394,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={ssd}
-                        onChange={(e) => setSsd(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">SSD</option>
 
@@ -371,10 +414,9 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={hdd}
-                        onChange={(e) => setHdd(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
-                        <option value="">HDD</option>
+                        <option value={1}>HDD</option>
 
                         {products
                           .filter(
@@ -392,8 +434,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={graphics}
-                        onChange={(e) => setGraphics(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">GRAPHICS CARD</option>
 
@@ -413,8 +454,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={powersupply}
-                        onChange={(e) => setPowersupply(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">POWER SUPPLY</option>
 
@@ -434,8 +474,7 @@ export default function ComputerScreen(props) {
                       <select
                         name=""
                         id=""
-                        value={cpu}
-                        onChange={(e) => setCpu(e.target.value)}
+                        onChange={(e) => addList(e.target.value, 1)}
                       >
                         <option value="">CASE</option>
 
@@ -453,14 +492,6 @@ export default function ComputerScreen(props) {
                     </div>
                   </>
                 )}
-                <div className="form-group">
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                </div>
               </form>
             </div>
             <div className="card__footer">

@@ -16,6 +16,7 @@ import {
   computerCreateReducer,
   computerDeleteReducer,
   computerListReducer,
+  computerReducer,
 } from './reducers/computerReducer.js';
 import {
   quotationCreateReducer,
@@ -39,6 +40,11 @@ const initialState = {
       ? JSON.parse(localStorage.getItem('clientData'))
       : {},
   },
+  computer: {
+    specs: localStorage.getItem('specs')
+      ? JSON.parse(localStorage.getItem('specs'))
+      : [],
+  },
 };
 
 const reducer = combineReducers({
@@ -50,6 +56,7 @@ const reducer = combineReducers({
   productList: productListReducer,
   productCreate: productCreateReducer,
   productDelete: productDeleteReducer,
+  computer: computerReducer,
   computerList: computerListReducer,
   computerCreate: computerCreateReducer,
   computerDelete: computerDeleteReducer,

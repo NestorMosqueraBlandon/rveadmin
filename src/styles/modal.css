@@ -25,3 +25,16 @@
   max-width: 500px;
   margin: 0 auto;
 }
+
+.doble-modal__dialog {
+  position: relative;
+  top: 40px;
+  box-shadow: var(--box-shadow-dark);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.doble-modal__dialog .card__body {
+  display: flex;
+  align-items: flex-start;
+}

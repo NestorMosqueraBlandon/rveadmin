@@ -10,6 +10,9 @@ import {
   COMPUTER_CREATE_REQUEST,
   COMPUTER_CREATE_SUCCESS,
   COMPUTER_CREATE_RESET,
+  COMPUTER_ADD_ITEM,
+  COMPUTER_REMOVE_ITEM,
+  COMPUTER_EMPY,
 } from '../constants/computerConstants';
 
 export const computerListReducer = (state = { computers: [] }, action) => {
@@ -50,6 +53,33 @@ export const computerDeleteReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case COMPUTER_DELETE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const computerReducer = (state = {}, action) => {
+  switch (action.type) {
+    case COMPUTER_ADD_ITEM:
+      const item = action.payload;
+      const existItem = state.specs.find((x) => x.product === item.product);
+      if (existItem) {
+        return {
+          ...state,
+          specs: state.specs.map((x) =>
+            x.product === existItem.product ? item : x
+          ),
+        };
+      } else {
+        return { ...state, specs: [...state.specs, item] };
+      }
+    case COMPUTER_REMOVE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter((x) => x.product !== action.payload),
+      };
+    case COMPUTER_EMPY:
+      return { ...state, error: '', specs: [] };
     default:
       return state;
   }

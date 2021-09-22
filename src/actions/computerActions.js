@@ -9,6 +9,8 @@ import {
   COMPUTER_DELETE_FAIL,
   COMPUTER_DELETE_REQUEST,
   COMPUTER_DELETE_SUCCESS,
+  COMPUTER_ADD_ITEM,
+  COMPUTER_EMPY,
 } from '../constants/computerConstants';
 
 export const listComputers = () => async (dispatch, getState) => {
@@ -30,27 +32,27 @@ export const listComputers = () => async (dispatch, getState) => {
   }
 };
 
-export const createComputer =
-  (name, brand, category, image, price) => async (dispatch) => {
-    dispatch({
-      type: COMPUTER_CREATE_REQUEST,
-      payload: { name, brand, category, image, price },
-    });
+export const createComputer = (computer) => async (dispatch) => {
+  dispatch({
+    type: COMPUTER_CREATE_REQUEST,
+    payload: computer,
+  });
 
-    try {
-      const { data } = await Axios.post(
-        'https://rveapi.herokuapp.com/api/v1/computers/',
-        { name, brand, category, image, price }
-      );
-      dispatch({ type: COMPUTER_CREATE_SUCCESS, payload: data });
-    } catch (error) {
-      const message =
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message;
-      dispatch({ type: COMPUTER_CREATE_FAIL, payload: message });
-    }
-  };
+  try {
+    const { data } = await Axios.post(
+      'http://localhost:4000/api/v1/computers/',
+      computer,
+      {}
+    );
+    dispatch({ type: COMPUTER_CREATE_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({ type: COMPUTER_CREATE_FAIL, payload: message });
+  }
+};
 
 export const deleteComputer = (id) => async (dispatch, getState) => {
   dispatch({ type: COMPUTER_DELETE_REQUEST, payload: id });
@@ -66,4 +68,27 @@ export const deleteComputer = (id) => async (dispatch, getState) => {
           : error.message,
     });
   }
+};
+
+export const addToList = (id, qty) => async (dispatch, getState) => {
+  const { data } = await Axios.get(
+    `https://rveapi.herokuapp.com/api/v1/products/${id}`
+  );
+
+  dispatch({
+    type: COMPUTER_ADD_ITEM,
+    payload: {
+      id: data._id,
+      product: data.category,
+      name: data.name,
+      price: data.price,
+      qty,
+    },
+  });
+  localStorage.setItem('specs', JSON.stringify(getState().computer.specs));
+};
+
+export const removeList = () => (dispatch, getState) => {
+  dispatch({ type: COMPUTER_EMPY });
+  localStorage.setItem('items', []);
 };

@@ -77,6 +77,9 @@ export default function ProductScreen(props) {
     if (page <= -1) {
       setPage(0);
       return;
+    } else if (page >= 11) {
+      setPage(11);
+      return;
     }
     dispatch(listProducts(page));
   };
