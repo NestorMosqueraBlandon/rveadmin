@@ -452,7 +452,7 @@ export default function ComputerScreen(props) {
                         {products
                           .filter(
                             (product) =>
-                              product.category === '614277a41873780023b43889'
+                              product.category === '6148de305b1d5d00233599c1'
                           )
                           .map((product) => (
                             <option key={product._id} value={product._id}>
