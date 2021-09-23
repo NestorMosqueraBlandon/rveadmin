@@ -110,3 +110,11 @@ tr:hover {
 .footer__buttons .btn:first-child {
   margin-right: 20px;
 }
+
+.home__title {
+  line-height: 15px;
+}
+.home__subtitle {
+  font-size: 1.4rem;
+  font-weight: 300;
+}

@@ -49,6 +49,7 @@ export default function ProductScreen(props) {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(0);
+  const [size, setSize] = useState(100);
   useEffect(() => {
     if (successCreate) {
       dispatch({ type: PRODUCT_CREATE_RESET });
@@ -62,7 +63,7 @@ export default function ProductScreen(props) {
       dispatch({ type: PRODUCT_DELETE_RESET });
     }
     dispatch(listCategories());
-    dispatch(listProducts(page));
+    dispatch(listProducts(size, page));
   }, [dispatch, props.history, successDelete, successCreate]);
 
   const submitHandler = (e) => {
@@ -74,6 +75,7 @@ export default function ProductScreen(props) {
   const setPageHandler = (num) => {
     console.log(num);
     setPage(page + num);
+    // setSize('10');
     if (page <= -1) {
       setPage(0);
       return;

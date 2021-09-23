@@ -48,6 +48,27 @@ export default function Navigation() {
       <div className="navigation__items">
         <details>
           <summary className="navigation__subtitle">
+            Main <i className="bx bx-down-arrow-alt"></i>
+          </summary>
+          <div>
+            <Link
+              to="/"
+              onClick={() => setActive('home')}
+              className={
+                active === 'home'
+                  ? 'navigation__item active'
+                  : 'navigation__item'
+              }
+            >
+              <div className="icon">
+                <i className="bx bxs-home"></i>
+              </div>
+              <div className="title">Home</div>
+            </Link>
+          </div>
+        </details>
+        <details>
+          <summary className="navigation__subtitle">
             Hardware <i className="bx bx-down-arrow-alt"></i>
           </summary>
           <div>

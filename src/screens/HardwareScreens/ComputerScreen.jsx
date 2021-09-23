@@ -264,7 +264,7 @@ export default function ComputerScreen(props) {
                       type="text"
                       placeholder="Name"
                       value={name}
-                      onChange={(e) => setName(e.target.value)}
+                      onChange={(e) => setName(e.target.value.toUpperCase())}
                     />
                   </div>
                   <div className="form-group">
@@ -272,7 +272,7 @@ export default function ComputerScreen(props) {
                       type="text"
                       placeholder="Brand"
                       value={brand}
-                      onChange={(e) => setBrand(e.target.value)}
+                      onChange={(e) => setBrand(e.target.value.toUpperCase())}
                     />
                   </div>
 

@@ -11,8 +11,9 @@ import {
   PRODUCT_DELETE_SUCCESS,
 } from '../constants/productConstants';
 
-export const listProducts = (page) => async (dispatch, getState) => {
+export const listProducts = (size, page) => async (dispatch, getState) => {
   dispatch({ type: PRODUCT_LIST_REQUEST });
+  console.log('Size', size);
   try {
     const { data } = await Axios.get(
       `https://rveapi.herokuapp.com/api/v1/products?page=${page}`
