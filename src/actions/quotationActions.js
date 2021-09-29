@@ -126,6 +126,6 @@ export const detailsQuotation = (quotationId) => async (dispatch) => {
 };
 
 export const removeItems = () => (dispatch, getState) => {
+  localStorage.removeItem('items');
   dispatch({ type: QUOTATION_EMPY });
-  localStorage.setItem('items', []);
 };

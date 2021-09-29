@@ -65,6 +65,11 @@ export default function QuotationScreen(props) {
         note,
       })
     );
+    // dispatch(removeItems());
+  };
+
+  const clearScreen = () => {
+    dispatch(removeItems());
   };
 
   const addItem = (name, qty, id, pos) => {
@@ -311,7 +316,7 @@ export default function QuotationScreen(props) {
           /> */}
           <ReactToPdf
             targetRef={ref}
-            filename="div-blue.pdf"
+            filename={`${name}-${code}`}
             options={options}
             x={0}
             y={0}
@@ -409,6 +414,9 @@ export default function QuotationScreen(props) {
           </div>
           <button className="btn" onClick={() => createHandler()}>
             Save
+          </button>
+          <button className="btn" onClick={() => clearScreen()}>
+            Clear
           </button>
         </div>
       </div>

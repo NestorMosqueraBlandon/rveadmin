@@ -39,3 +39,15 @@
   color: var(--txt-color-dark);
   border-radius: 5px;
 }
+
+.task__container {
+  display: flex;
+  padding: 10px;
+}
+
+.task__card {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  /* background: rgba(255, 255, 255, 0.3); */
+  width: 250px;
+  min-height: 80vh;
+}

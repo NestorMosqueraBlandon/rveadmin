@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Layout from './components/Layout';
+import TaskScreen from './screens/EnterpriseScreens/TaskScreen';
 import CategoryScreen from './screens/HardwareScreens/CategoryScreen';
 import ComputerScreen from './screens/HardwareScreens/ComputerScreen';
 import ProductScreen from './screens/HardwareScreens/ProductScreen';
@@ -35,6 +36,7 @@ function App() {
               path="/quotation/:id"
               component={QuotationsDetailsScreen}
             ></Route>
+            <Route path="/task" component={TaskScreen} exact></Route>
           </Layout>
         ) : (
           <>
