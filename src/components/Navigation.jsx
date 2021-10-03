@@ -178,6 +178,20 @@ export default function Navigation() {
               </div>
               <div className="title">Task</div>
             </Link>
+            <Link
+              to="/chat"
+              onClick={() => setActive('chat')}
+              className={
+                active === 'chat'
+                  ? 'navigation__item active'
+                  : 'navigation__item'
+              }
+            >
+              <div className="icon">
+                <i className="bx bx-task"></i>
+              </div>
+              <div className="title">Chat</div>
+            </Link>
           </div>
         </details>
         <Link to="/" onClick={signoutHandler} className="navigation__item end">

@@ -40,7 +40,7 @@ export const createComputer = (computer) => async (dispatch) => {
 
   try {
     const { data } = await Axios.post(
-      'http://localhost:4000/api/v1/computers/',
+      'https://rveapi.herokuapp.com/api/v1/computers/',
       computer,
       {}
     );
