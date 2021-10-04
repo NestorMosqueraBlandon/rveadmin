@@ -2,7 +2,6 @@ import React from 'react'
 import {ChatEngine} from 'react-chat-engine'
 import { useSelector } from 'react-redux'
 import ChatFeed from '../../components/ChatFeed'
-import '../../styles/chat.css'
 
 export default function ChatScreen() {
 
@@ -14,7 +13,7 @@ export default function ChatScreen() {
     
     return (
         <ChatEngine heigth="100vh" projectID={projectID} 
-        userName={userInfo.username} userSecret={userInfo.token} 
+        userName={userInfo.username} userSecret={userInfo.password} 
         renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />} 
         onNewMessage={() => new Audio('https://chat-engine-assets.s3.amazonaws.com/click.mp3').play()}/>
     )

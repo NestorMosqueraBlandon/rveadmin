@@ -9,6 +9,7 @@ import './styles/modal.css';
 import './styles/input.css';
 import './styles/chart.css';
 import './styles/client.css';
+import './styles/chat.css'
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
