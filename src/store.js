@@ -25,6 +25,10 @@ import {
   quotationListReducer,
   quotationReducer,
 } from './reducers/quotationReducer.js';
+import {
+  taskCreateReducer,
+  taskListReducer,
+} from './reducers/taskReducer.js';
 
 const initialState = {
   userSignin: {
@@ -65,6 +69,8 @@ const reducer = combineReducers({
   quotationList: quotationListReducer,
   quotationDelete: quotationDeleteReducer,
   quotationDetails: quotationDetailsReducer,
+  taskList: taskListReducer,
+  taskCreate: taskCreateReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -12,9 +12,12 @@ export default function ChatScreen() {
 
     
     return (
+        <div className="overflow">
+
         <ChatEngine heigth="100vh" projectID={projectID} 
         userName={userInfo.username} userSecret={userInfo.password} 
         renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />} 
         onNewMessage={() => new Audio('https://chat-engine-assets.s3.amazonaws.com/click.mp3').play()}/>
+        </div>
     )
 }
