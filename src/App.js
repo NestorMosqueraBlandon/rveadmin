@@ -13,6 +13,8 @@ import QuotationsScreen from './screens/HardwareScreens/QuotationsScreen';
 import HomeScreen from './screens/HomeScreen';
 import SigninScreen from './screens/LoginScreens/SigninScreen';
 import SignupScreen from './screens/LoginScreens/SignupScreen';
+import CreatePostScreen from './screens/Store/CreatePostScreen';
+import PostScreen from './screens/Store/PostScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -39,6 +41,8 @@ function App() {
             ></Route>
             <Route path="/task" component={TaskScreen} exact></Route>
             <Route path="/chat" component={ChatScreen} exact></Route>
+            <Route path="/post" component={PostScreen} exact></Route>
+            <Route path="/createpost" component={CreatePostScreen} exact></Route>
           </Layout>
         ) : (
           <>

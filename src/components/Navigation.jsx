@@ -65,6 +65,20 @@ export default function Navigation() {
               </div>
               <div className="title">Home</div>
             </Link>
+            <Link
+              to="/createpost"
+              onClick={() => setActive('createPost')}
+              className={
+                active === 'createPost'
+                  ? 'navigation__item active'
+                  : 'navigation__item'
+              }
+            >
+              <div className="icon">
+                <i className="bx bxs-post"></i>
+              </div>
+              <div className="title">Create Post</div>
+            </Link>
           </div>
         </details>
         <details>

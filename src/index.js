@@ -15,13 +15,27 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'http://localhost:5001/graphql',
+  cache: new InMemoryCache()
+})
 
 ReactDOM.render(
+  <ApolloProvider client={client} >
   <Provider store={store}>
     <React.StrictMode>
       <App />
     </React.StrictMode>
   </Provider>,
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
