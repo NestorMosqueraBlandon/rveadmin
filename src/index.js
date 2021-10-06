@@ -24,7 +24,7 @@ import {
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5001/graphql',
+  uri: 'https://rveapiql.herokuapp.com/',
   cache: new InMemoryCache()
 })
 
