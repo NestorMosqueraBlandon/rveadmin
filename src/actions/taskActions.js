@@ -43,7 +43,7 @@ export const updateTask = (task) => async(dispatch) => {
     dispatch({type: TASK_UPDATE_REQUEST, payload: task});
     
     try{
-        const {data} = await Axios.put(`http://localhost:6002/api/v1/tasks/${task._id}`, task);
+        const {data} = await Axios.put(`http://rveapi.herokuapp.com/api/v1/tasks/${task._id}`, task);
         dispatch({type: TASK_UPDATE_SUCCESS, payload: data});
     }catch(error){
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
