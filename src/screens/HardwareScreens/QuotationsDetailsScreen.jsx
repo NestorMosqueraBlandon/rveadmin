@@ -14,7 +14,6 @@ import {
   QUOTATION_DETAILS_RESET,
 } from '../../constants/quotationConstants';
 import swal from 'sweetalert';
-import axios from 'axios';
 
 export default function QuotationsDetailsScreen(props) {
   const quotationId = props.match.params.id;

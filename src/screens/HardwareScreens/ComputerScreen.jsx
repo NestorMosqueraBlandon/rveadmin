@@ -49,14 +49,6 @@ export default function ComputerScreen(props) {
   } = categoryList;
 
   const [name, setName] = useState('');
-  const [cpu, setCpu] = useState('');
-  const [motherboard, setMotherboard] = useState('');
-  const [ram, setRam] = useState('');
-  const [ssd, setSsd] = useState('');
-  const [hdd, setHdd] = useState('');
-  const [powersupply, setPowersupply] = useState('');
-  const [wattercooling, setWatercooling] = useState('');
-  const [graphics, setGraphics] = useState('');
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');

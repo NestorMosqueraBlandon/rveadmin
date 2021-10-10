@@ -9,6 +9,9 @@ import {
   TASK_DELETE_FAIL,
   TASK_DELETE_REQUEST,
   TASK_DELETE_SUCCESS,
+  TASK_UPDATE_REQUEST,
+  TASK_UPDATE_SUCCESS,
+  TASK_UPDATE_FAIL,
 
 } from '../constants/taskConstants';
 
@@ -17,24 +20,37 @@ export const listTasks = () => async (dispatch, getState) => {
     dispatch({type: TASK_LIST_REQUEST});
     try{
         const {data} = await Axios.get('https://rveapi.herokuapp.com/api/v1/tasks/');
-        dispatch({type: TASK_LIST_SUCCESS, payload: data.categories});
+        dispatch({type: TASK_LIST_SUCCESS, payload: data.tasks});
     }catch(error){
         
         dispatch({type: TASK_LIST_FAIL, payload: error.message && error.response.data.message? error.response.data.message : error.message, });
     }
 }
 
-export const createTask = (priority, title, description, peoples) => async(dispatch) => {
-    dispatch({type: TASK_CREATE_REQUEST, payload: {priority, title, description, peoples}});
+export const createTask = (priority, title, description, users) => async(dispatch) => {
+    dispatch({type: TASK_CREATE_REQUEST, payload: {priority, title, description, users}});
     
     try{
-        const {data} = await Axios.post('https://rveapi.herokuapp.com/api/v1/tasks/', {priority, title, description, peoples});
+        const {data} = await Axios.post('http://rveapi.herokuapp.com/api/v1/tasks/', {priority, title, description, users});
         dispatch({type: TASK_CREATE_SUCCESS, payload: data});
     }catch(error){
         const message = error.response && error.response.data.message ? error.response.data.message : error.message;
         dispatch({type: TASK_CREATE_FAIL, payload: message});
     }
 };
+
+export const updateTask = (task) => async(dispatch) => {
+    dispatch({type: TASK_UPDATE_REQUEST, payload: task});
+    
+    try{
+        const {data} = await Axios.put(`http://localhost:6002/api/v1/tasks/${task._id}`, task);
+        dispatch({type: TASK_UPDATE_SUCCESS, payload: data});
+    }catch(error){
+        const message = error.response && error.response.data.message ? error.response.data.message : error.message;
+        dispatch({type: TASK_UPDATE_FAIL, payload: message});
+    }
+};
+
 
 
 export const deleteCategory = (id) => async(dispatch, getState) => {

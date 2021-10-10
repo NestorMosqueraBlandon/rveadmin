@@ -32,12 +32,12 @@ export default function MessageForm(props) {
                 onSubmit={handleSubmit} 
             />
             <label htmlFor="upload-button">
-                <span className="image-button"><i class='bx bxs-image-add' ></i></span>
+                <span className="image-button"><i className='bx bxs-image-add' ></i></span>
             </label>
             <input type="file" multiple={false} name="" id="upload-button" style={{ display: 'none'}} 
                 onChange={handleUpload}
             />
-            <button type="submit" className="send-button"><i class='bx bxs-send' ></i></button>
+            <button type="submit" className="send-button"><i className='bx bxs-send' ></i></button>
         </form>
     )
 }

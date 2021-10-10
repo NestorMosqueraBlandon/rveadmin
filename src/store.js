@@ -28,6 +28,7 @@ import {
 import {
   taskCreateReducer,
   taskListReducer,
+  taskUpdateReducer,
 } from './reducers/taskReducer.js';
 
 const initialState = {
@@ -70,7 +71,8 @@ const reducer = combineReducers({
   quotationDelete: quotationDeleteReducer,
   quotationDetails: quotationDetailsReducer,
   taskList: taskListReducer,
-  taskCreate: taskCreateReducer
+  taskCreate: taskCreateReducer,
+  taskUpdate: taskUpdateReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

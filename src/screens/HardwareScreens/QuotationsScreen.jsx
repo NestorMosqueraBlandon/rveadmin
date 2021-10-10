@@ -58,7 +58,7 @@ export default function QuotationsScreen(props) {
         <LoadingBox></LoadingBox>
       ) : (
         <div className="clean__body">
-          <i class="bx bx-search-alt-2"></i>
+          <i className="bx bx-search-alt-2"></i>
           <div className="form-group-icon">
             <input
               type="text"

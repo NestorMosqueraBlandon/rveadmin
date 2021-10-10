@@ -10,6 +10,10 @@ import {
     TASK_CREATE_REQUEST,
     TASK_CREATE_SUCCESS,
     TASK_CREATE_RESET,
+    TASK_UPDATE_REQUEST,
+    TASK_UPDATE_SUCCESS,
+    TASK_UPDATE_FAIL,
+    TASK_UPDATE_RESET,
   } from '../constants/taskConstants';
   
   export const taskListReducer = (state = { tasks: [] }, action) => {
@@ -54,7 +58,22 @@ import {
         return state;
     }
   };
-  
+
+  export const taskUpdateReducer = (state = {}, action) => {
+    switch (action.type) {
+      case TASK_UPDATE_REQUEST:
+        return { loading: true };
+      case TASK_UPDATE_SUCCESS:
+        return { loading: false, success: true };
+      case TASK_UPDATE_FAIL:
+        return { loading: false, error: action.payload };
+      case TASK_UPDATE_RESET:
+        return {};
+      default:
+        return state;
+    }
+  };
+
   // export const clientDetailsReducer = ( state = { loading:true}, action) =>{
   //     switch(action.type){
   //         case CLIENT_DETAILS_REQUEST:

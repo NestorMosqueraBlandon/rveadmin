@@ -80,7 +80,7 @@ export default function CategoryScreen(props) {
         <div className="clean__body">
           <div className="clean__body-header">
             <div className="form-group-icon">
-              <i class="bx bx-search-alt-2"></i>
+              <i className="bx bx-search-alt-2"></i>
               <input
                 type="text"
                 className="form-control"
@@ -151,7 +151,7 @@ export default function CategoryScreen(props) {
             </div>
             <div className="card__footer">
               <button className="btn" onClick={submitHandler}>
-                Guardar
+                Save
               </button>
             </div>
           </div>

@@ -13,7 +13,6 @@ import {
   removeItems,
 } from '../../actions/quotationActions';
 import { QUOTATION_CREATE_RESET } from '../../constants/quotationConstants';
-import ReactToPrint from 'react-to-print';
 import ReactToPdf from 'react-to-pdf';
 import '../../styles/invoice.css';
 export default function QuotationScreen(props) {
@@ -22,7 +21,6 @@ export default function QuotationScreen(props) {
   );
   const [name, setName] = useState('');
   const [type, setType] = useState('products');
-  const [brand, setBrand] = useState('');
 
   const quotationState = useSelector((state) => state.quotation);
 
@@ -86,12 +84,7 @@ export default function QuotationScreen(props) {
     dispatch({ type: QUOTATION_CREATE_RESET });
   };
 
-  const setToBrand = (product) => {
-    if (product.id != '614277871873780023b43881') {
-    } else {
-      setBrand(product.brand);
-    }
-  };
+
   const ref = createRef();
   const options = {
     orientation: 'portrait',

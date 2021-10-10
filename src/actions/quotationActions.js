@@ -51,9 +51,8 @@ export const addToCart = (id, qty, pos) => async (dispatch, getState) => {
 };
 
 export const sendEmail = (email) => async (dispatch, getState) => {
-  console.log('entro');
   try {
-    const { data } = await Axios.post(
+     await Axios.post(
       'https://rveapi.herokuapp.com/api/v1/quotations/email',
       email,
       {}

@@ -73,6 +73,7 @@ margin: 0 auto;
   padding: 1rem;
   /* background-color: ; */
   border: 1px solid rgba(255, 255, 255, 0.03);
+  margin-bottom: 1rem;
 }
 
 .card__item-header{
@@ -112,3 +113,46 @@ font-size: 1.3rem;
   margin-right: .5rem;
 }
 
+.card__item-footer .users {
+
+  margin-top: 1rem;
+  display: flex;
+}
+
+.picture{
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 5rem;
+}
+
+
+.card__item-footer .users .picture img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.labels-task{
+  display: flex;
+  align-items: center;
+}
+
+.labels-task label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.card__item-header .Moderate{
+  background-color: orangered;
+}
+
+.card__item-header .Delayed{
+  background-color: royalblue;
+}
+
+.card__item-header .Express{
+  background-color: red;
+}
