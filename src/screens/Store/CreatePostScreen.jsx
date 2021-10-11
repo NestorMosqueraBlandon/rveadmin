@@ -7,7 +7,7 @@ export default function CreatePostScreen() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [markdown, setMarkdown] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Noticias");
 
     const [createPost, {error}] = useMutation(CREATE_POST_MUTATION)
     const addPost = () => {
