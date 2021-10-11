@@ -51,8 +51,6 @@ export const updateTask = (task) => async(dispatch) => {
     }
 };
 
-
-
 export const deleteCategory = (id) => async(dispatch, getState) => {
     dispatch({type: TASK_DELETE_REQUEST, payload: id});
     try{
