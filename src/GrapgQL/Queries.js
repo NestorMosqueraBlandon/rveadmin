@@ -7,6 +7,7 @@ export const LOAD_POSTS = gql`
             title
             sanitizedHtml
             category
+            createdAt
         }
     }
 `

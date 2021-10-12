@@ -66,6 +66,20 @@ export default function Navigation() {
               <div className="title">Home</div>
             </Link>
             <Link
+              to="/post"
+              onClick={() => setActive('post')}
+              className={
+                active === 'post'
+                  ? 'navigation__item active'
+                  : 'navigation__item'
+              }
+            >
+              <div className="icon">
+              <i class='bx bxl-blogger'></i>
+              </div>
+              <div className="title">Posts</div>
+            </Link>
+            <Link
               to="/createpost"
               onClick={() => setActive('createPost')}
               className={
@@ -75,7 +89,7 @@ export default function Navigation() {
               }
             >
               <div className="icon">
-                <i className="bx bxs-post"></i>
+              <i class='bx bxs-comment-add' ></i>
               </div>
               <div className="title">Create Post</div>
             </Link>

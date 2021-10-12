@@ -1,8 +1,8 @@
 import { useMutation } from '@apollo/client';
-import React, { useState } from 'react'
-import { CREATE_POST_MUTATION } from '../../GrapgQL/Mutation';
+import React, { useEffect, useState } from 'react'
+import { CREATE_POST_MUTATION, DELETE_POST_MUTATION } from '../../GrapgQL/Mutation';
 
-export default function CreatePostScreen() {
+export default function CreatePostScreen(props) {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -11,6 +11,7 @@ export default function CreatePostScreen() {
     const [category, setCategory] = useState("Noticias");
 
     const [createPost, {error}] = useMutation(CREATE_POST_MUTATION)
+    
     const addPost = () => {
         createPost({
             variables: {
@@ -21,7 +22,14 @@ export default function CreatePostScreen() {
                 image: image
             }
         })
+        window.location.replace('/post');
+        // props.history.push("/post");
+        
     }
+
+    useEffect(() => {
+
+    }, [props.history])
 
     if(error){
         console.log(error)
