@@ -6,6 +6,7 @@ export default function CreatePostScreen() {
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
     const [markdown, setMarkdown] = useState("");
     const [category, setCategory] = useState("Noticias");
 
@@ -16,7 +17,8 @@ export default function CreatePostScreen() {
                 title: title,
                 description: description,
                 markdown: markdown,
-                category: category
+                category: category,
+                image: image
             }
         })
     }
@@ -29,7 +31,7 @@ export default function CreatePostScreen() {
         <div>
             <form action="">
                 <div className="form-group">
-                <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
                 </div>
                 <div className="form-group">
@@ -41,7 +43,10 @@ export default function CreatePostScreen() {
                         <option value="Hardware">Hardware</option>
                     </select>
                 </div>
+                <div className="form-group">
+                <input type="text" placeholder="Image" value={image} onChange={(e) => setImage(e.target.value)} />
 
+                </div>
                 <div className="form-group">
                 <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
