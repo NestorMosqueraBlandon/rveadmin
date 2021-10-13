@@ -75,7 +75,7 @@ export default function Navigation() {
               }
             >
               <div className="icon">
-              <i class='bx bxl-blogger'></i>
+              <i className='bx bxl-blogger'></i>
               </div>
               <div className="title">Posts</div>
             </Link>
@@ -89,7 +89,7 @@ export default function Navigation() {
               }
             >
               <div className="icon">
-              <i class='bx bxs-comment-add' ></i>
+              <i className='bx bxs-comment-add' ></i>
               </div>
               <div className="title">Create Post</div>
             </Link>

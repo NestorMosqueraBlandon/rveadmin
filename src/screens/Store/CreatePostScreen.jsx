@@ -1,8 +1,13 @@
 import { useMutation } from '@apollo/client';
 import React, { useEffect, useState } from 'react'
-import { CREATE_POST_MUTATION, DELETE_POST_MUTATION } from '../../GrapgQL/Mutation';
+import { useSelector } from 'react-redux';
+import { CREATE_POST_MUTATION } from '../../GrapgQL/Mutation';
 
 export default function CreatePostScreen(props) {
+
+
+    const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -12,17 +17,26 @@ export default function CreatePostScreen(props) {
 
     const [createPost, {error}] = useMutation(CREATE_POST_MUTATION)
     
+    const username = userInfo.name;
+    const userphoto = userInfo.image;
+
     const addPost = () => {
+
         createPost({
             variables: {
                 title: title,
                 description: description,
                 markdown: markdown,
                 category: category,
-                image: image
+                image: image,
+                username: username,
+                userphoto: userphoto
             }
         })
-        window.location.replace('/post');
+
+        setTimeout(() => {
+            window.location.replace('/post');
+        }, 1500)
         // props.history.push("/post");
         
     }

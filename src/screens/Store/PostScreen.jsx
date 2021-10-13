@@ -31,13 +31,18 @@ export default function PostScreen(props) {
       if (willDelete) {
         swal('Poof! ' + post.title + ' deleted', {
           icon: 'success',
+        }).then((deleted) => {
+
+      setTimeout(() => {
+        window.location.replace('');
+  
+        }, 1000)
         });
         deletePost({
           variables: {
               id: post.id,
           }
       })
-      window.location.replace('');
       }
     });
   };
