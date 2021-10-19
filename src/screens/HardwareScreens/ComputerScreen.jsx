@@ -52,7 +52,7 @@ export default function ComputerScreen(props) {
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [image, setImage] = useState('./img/default.png');
+  const [image, setImage] = useState('');
 
   const [search, setSearch] = useState('');
   const [searchBrand, setSearchBrand] = useState('');
@@ -275,6 +275,21 @@ export default function ComputerScreen(props) {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
                     />
+                  </div>
+                  <div className="form-group">
+                    <select name="" id="" onChange={(e) => setImage(e.target.value)}>
+                      <option value="./img/cases/unitec.png">Unitec</option>
+                      <option value="./img/cases/rve02.png">RVE Sport 02</option>
+                      <option value="./img/cases/rve03.png">RVE Sport 03</option>
+                      <option value="./img/cases/rve04.png">RVE Sport 04</option>
+                      <option value="./img/cases/rve05.png">RVE Sport 05</option>
+                      <option value="./img/cases/rockstar.png">Rockstar</option>
+                      <option value="./img/cases/optical.png">Gamemax Optical</option>
+                      <option value="./img/cases/invader.png">XPG Invader</option>
+                      <option value="./img/cases/elysium.png">Gamemax Elysium</option>
+                      <option value="./img/cases/diamond.png">Gamemax Diamond</option>
+                      <option value="./img/cases/blackhole.png">Gamemax Black Hole</option>
+                    </select>
                   </div>
 
                   <div className="form-group">
