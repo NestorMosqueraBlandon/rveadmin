@@ -488,6 +488,26 @@ export default function ComputerScreen(props) {
                           ))}
                       </select>
                     </div>
+                    <div className="form-group">
+                      <select
+                        name=""
+                        id=""
+                        onChange={(e) => addList(e.target.value, 1)}
+                      >
+                        <option value="">CASE</option>
+
+                        {products
+                          .filter(
+                            (product) =>
+                              product.category === '614277da1873780023b43899'
+                          )
+                          .map((product) => (
+                            <option key={product._id} value={product._id}>
+                              {product.name.toUpperCase()}
+                            </option>
+                          ))}
+                      </select>
+                      </div>
                   </>
                 )}
               </form>
