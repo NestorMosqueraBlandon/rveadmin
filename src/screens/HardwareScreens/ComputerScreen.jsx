@@ -494,12 +494,12 @@ export default function ComputerScreen(props) {
                         id=""
                         onChange={(e) => addList(e.target.value, 1)}
                       >
-                        <option value="">CASE</option>
+                        <option value="">MONITOR</option>
 
                         {products
                           .filter(
                             (product) =>
-                              product.category === '614277da1873780023b43899'
+                              product.category === '614f6e4e3bc91d0023852308'
                           )
                           .map((product) => (
                             <option key={product._id} value={product._id}>
