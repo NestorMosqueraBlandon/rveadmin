@@ -5,7 +5,7 @@ import LoadingBox from '../../components/LoadingBox';
 import TaskCard from '../../components/TaskCard';
 import TaskItem from '../../components/TaskItem';
 import { TASK_CREATE_RESET } from '../../constants/taskConstants';
-
+import Push from 'push.js'
 export default function TaskScreen() {
   const [openModal, setOpenModal] = useState(false);
 
@@ -19,8 +19,7 @@ export default function TaskScreen() {
 
   const taskCreate = useSelector((state) => state.taskCreate);
   const { success: successCreate } = taskCreate;
-
-
+  
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
@@ -36,7 +35,8 @@ export default function TaskScreen() {
       setDescription("");
       setPriority("Delayed");
       setUsers([]); 
-      window.location.replace('');
+      Push.create(title)
+      // window.location.replace('');
     }
     dispatch(listTasks())
   }, [dispatch, successCreate])
