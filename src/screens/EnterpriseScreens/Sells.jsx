@@ -70,7 +70,7 @@ export default function SellsScreen(props) {
 
   console.log(perRev);
   let avg = 0;
-  if (!loading) {
+  if (!loading && sells.length > 0) {
     avg = sells.reduce((a, c) => a + Number(c.perRevenue) * 1, 0);
     avg = avg / sells.length;
   }
