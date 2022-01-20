@@ -30,6 +30,7 @@ import {
   taskListReducer,
   taskUpdateReducer,
 } from './reducers/taskReducer.js';
+import { sellDeleteReducer, sellsCreateReducer, sellsListReducer } from './reducers/sellsReducer';
 
 const initialState = {
   userSignin: {
@@ -72,7 +73,10 @@ const reducer = combineReducers({
   quotationDetails: quotationDetailsReducer,
   taskList: taskListReducer,
   taskCreate: taskCreateReducer,
-  taskUpdate: taskUpdateReducer
+  taskUpdate: taskUpdateReducer,
+  sellsList: sellsListReducer,
+  sellCreate: sellsCreateReducer,
+  sellDelete: sellDeleteReducer
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

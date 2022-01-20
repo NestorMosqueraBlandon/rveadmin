@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import Layout from './components/Layout';
 import ChatScreen from './screens/EnterpriseScreens/ChatScreen';
+import SellsScreen from './screens/EnterpriseScreens/Sells';
 import TaskScreen from './screens/EnterpriseScreens/TaskScreen';
 import CategoryScreen from './screens/HardwareScreens/CategoryScreen';
 import ComputerScreen from './screens/HardwareScreens/ComputerScreen';
@@ -30,6 +31,7 @@ function App() {
             <Route path="/products" component={ProductScreen}></Route>
             <Route path="/computers" component={ComputerScreen}></Route>
             <Route path="/quotation" component={QuotationScreen} exact></Route>
+            <Route path="/sells" component={SellsScreen} exact></Route>
             <Route
               path="/quotations"
               component={QuotationsScreen}

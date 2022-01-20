@@ -179,7 +179,7 @@ export default function Navigation() {
               </div>
               <div className="title">Sell</div>
             </Link>
-            <Link to="" className="navigation__item">
+            <Link to="/sells" className="navigation__item">
               <div className="icon">
                 <i className="bx bx-list-ul"></i>
               </div>
